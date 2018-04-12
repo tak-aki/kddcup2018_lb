@@ -1,0 +1,10 @@
+{% extends "submit/base.html" %}
+{% block title %}submit complete{% endblock title %}
+{% load staticfiles %}
+
+{% block body %}
+    <div align="center">
+        <h1 align="center">submit complete</h1>
+        <a href="{% url 'submit:submit_form' %}"><button>back</button></a>
+    </div>
+{% endblock body %}
