@@ -3,9 +3,9 @@
 *.pot
 *.pyc
 *.swp
+*.csv
 __pycache__/
 local_settings.py
 db.sqlite3
 media
 submit_files/
-bootstrap/
