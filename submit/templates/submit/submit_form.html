@@ -1,26 +1,66 @@
 {% extends "submit/base.html" %}
-{% block title %}submit サンプル{% endblock title %}
+{% block title %}submit page{% endblock title %}
 {% load staticfiles %}
 
-      {% block body %}
-      <div id="wrapper">
+{% block body %}
+    <div id="wrapper">
         <div id="page-wrapper">
-          <div class="row">
-            <div class="col-lg-6 full-width margin-top-20percent" >
-    	      <form method="POST" enctype="multipart/form-data">
-	        {% csrf_token %}
-		 <div class="form-group">
-		  <label for="id_username">Username</label>
-		  <input type="text" class="form-control" name="username" id="id_username">
-		 </div>
-                 <div class="form-group">
-                  <label for="id_submitfile">Submit File</label>
-                  <input type="file" name="submit_file" id="id_submitfile">
-                 </div>
-		 <button type="submit" class="btn btn-primary btn-lg btn-block" value="submit">Submit</button>
-    	      </form>
+            <div class="row">
+                <div class="col-lg-6 full-width margin-top-20percent">
+                    <h2 align="center">submit page</h2>
+
+                    こんな感じのフォーマットで提出してね。<br/>
+                    score_dateの列には「この日のサブミットとしてあつかって欲しかった日付」を入力してね。<br/>
+                    いろんなscore_dateのサブミットファイルを縦に連結してサブミットすることもできるよ。<br/><br/>
+                    <table id="submit_sample" class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th class="score_table">score_date</th>
+                            <th class="score_table">test_id</th>
+                            <th class="score_table">PM2.5</th>
+                            <th class="score_table">PM10</th>
+                            <th class="score_table">O3</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="score_table">2018-04-01</td>
+                            <td class="score_table">aotizhongx_aq#0</td>
+                            <td class="score_table">10</td>
+                            <td class="score_table">11</td>
+                            <td class="score_table">12</td>
+                        </tr>
+                        <tr>
+                            <td class="score_table">2018-04-01</td>
+                            <td class="score_table">aotizhongx_aq#1</td>
+                            <td class="score_table">13</td>
+                            <td class="score_table">14</td>
+                            <td class="score_table">15</td>
+                        </tr>
+                        <tr>
+                            <td class="score_table">...</td>
+                            <td class="score_table">...</td>
+                            <td class="score_table">...</td>
+                            <td class="score_table">...</td>
+                            <td class="score_table">...</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br/><br/>
+                    <form method="POST" enctype="multipart/form-data" onsubmit="return check_blank(this)">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_username">Username</label>
+                            <input type="text" class="form-control" name="username" id="id_username">
+                        </div>
+                        <div class="form-group">
+                            <label for="id_submitfile">Submit File</label>
+                            <input type="file" name="submit_file" id="id_submitfile">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" value="submit">Submit</button>
+                    </form>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      {% endblock %}
+    </div>
+{% endblock %}
