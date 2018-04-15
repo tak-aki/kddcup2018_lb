@@ -7,7 +7,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-6 full-width margin-top-20percent">
-                    <h2 align="center">submit page</h2>
+                    <h2 align="center">Submit Page</h2>
 
                     こんな感じのフォーマットで提出してね。<br/>
                     score_dateの列には「この日のサブミットとしてあつかって欲しかった日付」を入力してね。<br/>
@@ -47,7 +47,7 @@
                         </tbody>
                     </table>
                     <br/><br/>
-                    <form method="POST" enctype="multipart/form-data" onsubmit="return check_blank(this)">
+                    <form method="POST" enctype="multipart/form-data" onsubmit="return check_blank_submit(this)">
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="id_username">Username</label>

@@ -1,5 +1,4 @@
-from django.shortcuts import render, redirect
-from django.template import Context
+from django.shortcuts import render
 from django.conf import settings
 from submit.models import SubmitModel, ScoreModel
 import os
@@ -103,10 +102,7 @@ def submit_form_view(request):
         if score_d[sdate]['submit'] is None:
             score_d[sdate]['score'] = '正解データなし'
         else:
-            if score_d[sdate]['label'].shape == score_d[sdate]['submit'].shape:
-                score_d[sdate]['score'] = calc_smape(score_d[sdate]['label'], score_d[sdate]['submit'])
-            else:
-                score_d[sdate]['score'] = '行数がおかしい'
+            score_d[sdate]['score'] = calc_smape(score_d[sdate]['label'], score_d[sdate]['submit'])\
 
     # average scoreを計算
     score_list = []
@@ -141,8 +137,3 @@ def submit_form_view(request):
     # 表示ページへ投げる
     context = {'submit_model':submit_model}
     return render(request, 'submit/complete.html', context)
-
-def complete_view(request):
-    return render(request, 'submit/complete.html')
-
-# Create your views here.
