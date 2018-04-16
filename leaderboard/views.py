@@ -4,7 +4,7 @@ from submit.models import ScoreModel, SubmitModel
 # Create your views here.
 def leaderboard_base_view(request):
 
-    score_list = ScoreModel.objects.all()
+    score_list = ScoreModel.objects.all().order_by('score_date')
     date_list = score_list.values_list('score_date', flat=True).distinct()
 
     context = {

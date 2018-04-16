@@ -67,7 +67,7 @@ def submit_form_view(request):
     # 数値にNoneがあったらエラーページを表示
     if submit_file_df.isnull().sum().sum() < 0:
         ##### 処理
-        raise NotImplementedError('数値にNone')
+        raise NotImplementedError('数値にNoneがある')
 
     # 日付リストを取得
     score_date_list = submit_file_df.score_date.unique()
@@ -77,7 +77,7 @@ def submit_form_view(request):
         lambda x: 1 if re.match('^\d{4}-\d{2}-\d{2}$', x) else 0)
     if date_check_sr.sum() != date_check_sr.shape[0]:
         ##### 処理
-        raise NotImplementedError('score_dateのフォーマットが所定のものでない')
+        raise NotImplementedError('score_dateのフォーマットが違う')
 
     # 日べつに、サブミットファイルと正解ファイルを辞書に格納
     score_d = {}
