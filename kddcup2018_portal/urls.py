@@ -23,4 +23,5 @@ urlpatterns = [
     path('submit/', include('submit.urls')),
     path('mysubmission/', include('mysubmission.urls')),
     path('leaderboard/', include('leaderboard.urls')),
+    path('datachart/', include('visualize.urls')),
 ]
