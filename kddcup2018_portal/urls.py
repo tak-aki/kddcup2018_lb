@@ -18,6 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('submit.urls')),
     path('submit/', include('submit.urls')),
     path('mysubmission/', include('mysubmission.urls')),
     path('leaderboard/', include('leaderboard.urls')),
