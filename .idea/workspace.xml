@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d4406fe-d583-4001-a5a5-052bf67a7c49" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kddcup2018_portal/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/kddcup2018_portal/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kddcup2018_portal/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/kddcup2018_portal/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/submit/templates/submit/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/submit/templates/submit/base.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,11 +54,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/submit/templates/submit/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="50" column="69" selection-start-line="50" selection-start-column="69" selection-end-line="50" selection-end-column="69" />
+            <state relative-caret-position="450">
+              <caret line="30" column="68" lean-forward="true" selection-start-line="30" selection-start-column="68" selection-end-line="30" selection-end-column="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/kddcup2018_portal/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+              <folding>
+                <element signature="e#641#673#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/submit/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="35" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -96,14 +123,12 @@
         <option value="$PROJECT_DIR$/submit/admin.py" />
         <option value="$PROJECT_DIR$/static/custom_css/score_table.css" />
         <option value="$PROJECT_DIR$/submit/templates/submit/complete.html" />
-        <option value="$PROJECT_DIR$/submit/urls.py" />
         <option value="$PROJECT_DIR$/submit/templates/submit/submit_form.html" />
         <option value="$PROJECT_DIR$/mysubmission/urls.py" />
         <option value="$PROJECT_DIR$/mysubmission/views.py" />
         <option value="$PROJECT_DIR$/mysubmission/templates/mysubmission/mysubmission_detail.html" />
         <option value="$PROJECT_DIR$/static/custom_css/structure.css" />
         <option value="$PROJECT_DIR$/mysubmission/templates/mysubmission/mysubmission_list.html" />
-        <option value="$PROJECT_DIR$/kddcup2018_portal/urls.py" />
         <option value="$PROJECT_DIR$/leaderboart/urls.py" />
         <option value="$PROJECT_DIR$/leaderboart/views.py" />
         <option value="$PROJECT_DIR$/kddcup2018_portal/settings.py" />
@@ -116,6 +141,8 @@
         <option value="$PROJECT_DIR$/leaderboard/views.py" />
         <option value="$PROJECT_DIR$/leaderboard/templates/leaderboard/leaderboard_list.html" />
         <option value="$PROJECT_DIR$/submit/templates/submit/base.html" />
+        <option value="$PROJECT_DIR$/submit/urls.py" />
+        <option value="$PROJECT_DIR$/kddcup2018_portal/urls.py" />
       </list>
     </option>
   </component>
@@ -472,16 +499,6 @@
     <entry file="file://$PROJECT_DIR$/mysubmission/templates/mysubmission/base.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/submit/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mysubmission/templates/mysubmission/mysubmission_D.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -510,13 +527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="591">
           <caret line="60" column="27" selection-start-line="49" selection-start-column="20" selection-end-line="60" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kddcup2018_portal/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -618,8 +628,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/submit/templates/submit/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="50" column="69" selection-start-line="50" selection-start-column="69" selection-end-line="50" selection-end-column="69" />
+        <state relative-caret-position="450">
+          <caret line="30" column="68" lean-forward="true" selection-start-line="30" selection-start-column="68" selection-end-line="30" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/submit/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="35" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kddcup2018_portal/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+          <folding>
+            <element signature="e#641#673#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

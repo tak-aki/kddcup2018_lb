@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from submit import views as submit_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('submit.urls')),
+    path('', submit_views.submit_form_view),
     path('submit/', include('submit.urls')),
     path('mysubmission/', include('mysubmission.urls')),
     path('leaderboard/', include('leaderboard.urls')),
