@@ -12,4 +12,4 @@ def leaderboard_base_view(request):
         'score_list':score_list
     }
 
-    return render(request, 'mysubmission/leaderboard_list.html', context)
+    return render(request, 'leaderboard/leaderboard_list.html', context)
