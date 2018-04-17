@@ -4,6 +4,7 @@
 *.pyc
 *.swp
 *.csv
+*.xlsx
 .DS_Store
 __pycache__/
 local_settings.py
