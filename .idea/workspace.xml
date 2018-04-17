@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d4406fe-d583-4001-a5a5-052bf67a7c49" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/static/custom_js/chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/submit/templates/visualize/datachart.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/visualize/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kddcup2018_portal/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/kddcup2018_portal/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/submit/templates/submit/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/submit/templates/submit/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/custom_js/chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom_js/chart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/submit/templates/visualize/datachart.html" beforeDir="false" afterPath="$PROJECT_DIR$/submit/templates/visualize/datachart.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,27 +22,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/submit/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" lean-forward="true" selection-start-line="28" selection-end-line="31" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chart.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/custom_js/chart.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="28" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualize/urls.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -59,11 +34,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/visualize/views.py">
+      <file leaf-file-name="chart.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/custom_js/chart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="40" lean-forward="true" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+            <state relative-caret-position="90">
+              <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/submit/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="690">
+              <caret line="46" column="26" lean-forward="true" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -71,50 +58,8 @@
       <file leaf-file-name="datachart.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/submit/templates/visualize/datachart.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kddcup2018_portal/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-              <folding>
-                <element signature="e#641#673#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/submit/templates/submit/base.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="67" selection-start-line="32" selection-start-column="67" selection-end-line="32" selection-end-column="67" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="complete.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/submit/templates/submit/complete.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" selection-start-line="35" selection-end-line="40" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/submit/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="7" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="285">
+              <caret line="19" column="45" lean-forward="true" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -174,11 +119,11 @@
         <option value="$PROJECT_DIR$/leaderboard/templates/leaderboard/leaderboard_list.html" />
         <option value="$PROJECT_DIR$/submit/urls.py" />
         <option value="$PROJECT_DIR$/submit/templates/submit/base.html" />
-        <option value="$PROJECT_DIR$/static/custom_js/chart.js" />
         <option value="$PROJECT_DIR$/kddcup2018_portal/urls.py" />
         <option value="$PROJECT_DIR$/visualize/url.py" />
         <option value="$PROJECT_DIR$/visualize/views.py" />
         <option value="$PROJECT_DIR$/submit/templates/visualize/datachart.html" />
+        <option value="$PROJECT_DIR$/static/custom_js/chart.js" />
       </list>
     </option>
   </component>
@@ -209,104 +154,6 @@
             <path>
               <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
               <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-              <item name="competition_data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-              <item name="competition_data" type="462c0819:PsiDirectoryNode" />
-              <item name="input" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-              <item name="leaderboard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-              <item name="leaderboard" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-              <item name="leaderboard" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="leaderboard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-              <item name="mysubmission" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-              <item name="mysubmission" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-              <item name="mysubmission" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="mysubmission" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="custom_css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="custom_js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-              <item name="submit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-              <item name="submit" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-              <item name="submit" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="submit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-              <item name="visualize" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kddcup2018_portal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kddcup2018_portal" type="462c0819:PsiDirectoryNode" />
-              <item name="visualize" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -452,7 +299,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" weight="0.32876712" />
@@ -659,13 +505,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/submit/views.py">
+    <entry file="file://$PROJECT_DIR$/kddcup2018_portal/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" lean-forward="true" selection-start-line="28" selection-end-line="31" />
+        <state relative-caret-position="165">
+          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#641#673#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/submit/templates/submit/complete.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" selection-start-line="35" selection-end-line="40" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/submit/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/submit/templates/submit/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="67" selection-start-line="32" selection-start-column="67" selection-end-line="32" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/submit/templates/visualize/datachart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="45" lean-forward="true" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -686,51 +563,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/submit/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="7" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/submit/templates/submit/complete.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" selection-start-line="35" selection-end-line="40" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/custom_js/chart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="28" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="28" />
+        <state relative-caret-position="90">
+          <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kddcup2018_portal/urls.py">
+    <entry file="file://$PROJECT_DIR$/submit/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        <state relative-caret-position="690">
+          <caret line="46" column="26" lean-forward="true" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
           <folding>
-            <element signature="e#641#673#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/submit/templates/visualize/datachart.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/submit/templates/submit/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="67" selection-start-line="32" selection-start-column="67" selection-end-line="32" selection-end-column="67" />
         </state>
       </provider>
     </entry>

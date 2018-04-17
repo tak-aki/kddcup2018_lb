@@ -1,16 +1,13 @@
 $(function () {
-    $('#PM25_chart_container').highcharts({
+    $('#bj_pm25_chart_container').highcharts({
       chart: {
-        width:500,
-        heigth:300
+        scrollablePlotArea: {
+            minWidth: 700
+        }
       },
       title: {
-        text: 'Monthly Average Temperature',
+        text: '北京のPM2.5推移',
         x: -20 //center
-      },
-      subtitle: {
-        text: 'Source: WorldClimate.com',
-        x: -20
       },
       xAxis: {
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -18,7 +15,7 @@ $(function () {
       },
       yAxis: {
         title: {
-          text: 'Temperature (°C)'
+          text: 'Concentrations (mg/m3)'
         },
         plotLines: [{
           value: 0,
@@ -27,7 +24,7 @@ $(function () {
         }]
       },
       tooltip: {
-        valueSuffix: '°C'
+        valueSuffix: 'mg/m3'
       },
       legend: {
         layout: 'vertical',

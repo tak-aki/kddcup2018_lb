@@ -8,7 +8,24 @@
             <div class="row">
                 <div class="col-lg-6 full-width margin-top-20percent">
                     <h2 align="center">Data Chart</h2>
-                    <div id="PM25_chart_container"></div>
+
+
+                    <ul class="nav nav-pills">
+                        <li class="active"><a href="#beijing_aq" data-toggle="tab">北京</a></li>
+                        <li><a href="#london_aq" data-toggle="tab">ロンドン</a></li>
+                    </ul>
+
+                    <!-- タブ内容 -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="beijing_aq">
+
+                            <div id="bj_pm25_chart_container"></div>
+                        </div>
+                        <div class="tab-pane" id="london_aq">
+                            <p>タブＢの内容</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
