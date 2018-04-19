@@ -50,13 +50,15 @@ def mysubmission_detail_view(request):
         for city in ['beijing','london']:
             dir_name = "bj" if city == "beijing" else "ld"
             temp_label_data = pd.DataFrame(index=[], columns=['station_id','record_time','PM2.5','PM10','NO2','CO','O3','SO2'])
-            for p in pd.date_range('20180401',submit[0].score_date_end + timedelta(days = 2)):
+            for p in pd.date_range(score.score_date - timedelta(days = 7),score.score_date + timedelta(days = 2)):
                 temp = pd.read_csv("./competition_data/data/official_aq_master/"+dir_name+"/date/"+p.strftime("%Y-%m-%d") + ".csv")
                 temp_label_data = pd.concat([temp_label_data,temp],axis=0)
             temp_label_data = temp_label_data.loc[:,['record_time','PM2.5','PM10','O3']].groupby(['record_time']).median()
+            # 先頭行がnullだと怒られるからとりあえず
+            temp_label_data.iloc[0, :] = 0
             # データに抜けがあるので、ガワを作る
             # ただ、最初のほうがnanだと怒られるので、最初の方のnanがない時間帯から始める
-            temp = pd.DataFrame(index=pd.date_range('2018-4-1 02:00:00',(submit[0].score_date_end + timedelta(days = 2)).strftime("%Y-%m-%d") + ' 23:00:00', freq='H'))
+            temp = pd.DataFrame(index=pd.date_range(temp_label_data.index[0],(score.score_date + timedelta(days = 2)).strftime("%Y-%m-%d") + ' 23:00:00', freq='H'))
             temp_label_data = temp_label_data.join(temp,how="outer")
             label_data[city] = temp_label_data
 
@@ -75,7 +77,7 @@ def mysubmission_detail_view(request):
                 temp_dict['chart_data_series'].append({
                     'name':'label',
                     'data':str(label_data[city][target].values.tolist()).replace('nan','null'),
-                    'start_dt':'2018-04-01 02:00:00'
+                    'start_dt':str(label_data[city].index[0])
                     })
                 scores[index].charts.append(temp_dict)
 
