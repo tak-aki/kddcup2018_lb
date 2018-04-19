@@ -7,6 +7,7 @@ class SubmitModel(models.Model):
     score_date_start = models.DateField()
     score_date_end = models.DateField()
     score_avg = models.FloatField()
+    for_score_simulation = models.BooleanField(default=False)
 
 
 class ScoreModel(models.Model):

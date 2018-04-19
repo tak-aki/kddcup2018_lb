@@ -79,6 +79,7 @@ def submit_form_view(request):
         ##### 処理
         raise NotImplementedError('score_dateのフォーマットが違う')
 
+
     # 日べつに、サブミットファイルと正解ファイルを辞書に格納
     score_d = {}
     for sdate in score_date_list:
@@ -102,14 +103,32 @@ def submit_form_view(request):
         if score_d[sdate]['submit'] is None:
             score_d[sdate]['score'] = '正解データなし'
         else:
-            score_d[sdate]['score'] = calc_smape(score_d[sdate]['label'], score_d[sdate]['submit'])\
+            score_d[sdate]['score'] = calc_smape(score_d[sdate]['label'], score_d[sdate]['submit'])
+
+    unscored_date_list = []
+    for sdate in score_date_list:
+        if score_d[sdate]['submit'] is None:
+            unscored_date_list.append(sdate)
+
+
+    # 「スコアシミュレーターに使う」にチェックが入っている場合、日付をチェック
+    for_score_simulation = request.POST.get('for_score_simulation', False)
+    if for_score_simulation:
+        scoresimulator_datelist = pd.date_range('2018-03-24', '2018-04-20', freq='D').astype(str).tolist()
+        if sorted(score_date_list) != sorted(scoresimulator_datelist):
+            ##### 処理
+            raise NotImplementedError('日付が足りないor多すぎます（スコアシミュレーター用）')
+        if len(unscored_date_list) != 0:
+            ##### 処理
+            raise NotImplementedError('まだ正解データが揃っていません（スコアシミュレーター用）')
+
 
     # average scoreを計算
     score_list = []
     date_list = []
     for sdate in score_date_list:
-        date_list.append(score_d[sdate]['date'])
         if not score_d[sdate]['submit'] is None:
+            date_list.append(score_d[sdate]['date'])
             score_list.append(score_d[sdate]['score'])
     avg_score = np.mean(score_list)
     score_date_start = np.min(date_list)
@@ -121,19 +140,22 @@ def submit_form_view(request):
         submit_timestamp=submit_time,
         score_date_start = score_date_start,
         score_date_end = score_date_end,
-        score_avg = avg_score
+        score_avg = avg_score,
+        for_score_simulation=for_score_simulation
     )
     submit_model.save()
 
     # scoreを登録
     for sdate in score_date_list:
-        score_model = ScoreModel(
-            submit = submit_model,
-            score_date = pd.to_datetime(sdate).date(),
-            score = score_d[sdate]['score']
-            )
-        score_model.save()
+        if not score_d[sdate]['submit'] is None:
+            score_model = ScoreModel(
+                submit = submit_model,
+                score_date = pd.to_datetime(sdate).date(),
+                score = score_d[sdate]['score']
+                )
+            score_model.save()
+
 
     # 表示ページへ投げる
-    context = {'submit_model':submit_model}
+    context = {'submit_model':submit_model, 'unscored_date_list':unscored_date_list}
     return render(request, 'submit/complete.html', context)

@@ -97,7 +97,6 @@ london_aq_historical_20180331 = \
     }).drop('id', axis=1)\
     .sort_values(['station_id', 'record_time'])
 
-
 london_aq_historical_concat = pd.concat([london_aq_historical_forecast,
                                          london_aq_historical_other,
                                          london_aq_historical_20180331])\
@@ -107,3 +106,20 @@ london_aq_historical_concat = pd.concat([london_aq_historical_forecast,
 london_aq_historical_concat[['station_id', 'record_time', 'PM2.5', 'PM10', 'O3', 'NO2' ,'CO', 'SO2']]\
     .to_csv(os.path.join(home, 'data/official_aq_master/ld/aq_historical.csv'), index=False)
 
+label_date_list = pd.date_range('2018-03-24', '2018-03-31', freq='D')
+for label_date in label_date_list:
+    bj_tmp_date = beijing_aq_historical_concat.loc[
+        beijing_aq_historical_concat.record_time.isin(
+            pd.date_range(label_date, label_date + pd.Timedelta(hours=23), freq='h')
+        )
+    ]
+    bj_tmp_date[['station_id', 'record_time', 'PM2.5', 'PM10', 'O3', 'NO2' ,'CO', 'SO2']]\
+        .to_csv(os.path.join(home, 'data/official_aq_master/bj/date/'+str(label_date)[:10] + '.csv'), index=False)
+
+    ld_tmp_date = london_aq_historical_concat.loc[
+        london_aq_historical_concat.record_time.isin(
+            pd.date_range(label_date, label_date + pd.Timedelta(hours=23), freq='h')
+        )
+    ]
+    ld_tmp_date[['station_id', 'record_time', 'PM2.5', 'PM10', 'O3', 'NO2' ,'CO', 'SO2']]\
+        .to_csv(os.path.join(home, 'data/official_aq_master/ld/date/'+str(label_date)[:10] + '.csv'), index=False)
