@@ -98,17 +98,23 @@ def submit_form_view(request):
                 'label' : None
             }
 
+    unscored_date_list = []
+    for sdate in score_date_list:
+        if score_d[sdate]['label'] is None:
+            unscored_date_list.append(sdate)
+
+    # スコアリングできる日が1日もなかったらエラー
+    if len(score_date_list) == len(unscored_date_list):
+        ##### 処理
+        raise NotImplementedError('スコアリングできる日が1日もありません。')
+
+
     # scoreを計算
     for sdate in score_date_list:
         if score_d[sdate]['submit'] is None:
             score_d[sdate]['score'] = '正解データなし'
         else:
             score_d[sdate]['score'] = calc_smape(score_d[sdate]['label'], score_d[sdate]['submit'])
-
-    unscored_date_list = []
-    for sdate in score_date_list:
-        if score_d[sdate]['submit'] is None:
-            unscored_date_list.append(sdate)
 
 
     # 「スコアシミュレーターに使う」にチェックが入っている場合、日付をチェック
