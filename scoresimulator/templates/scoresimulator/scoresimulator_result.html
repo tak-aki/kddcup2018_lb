@@ -1,0 +1,80 @@
+{% extends "submit/base.html" %}
+{% block title %}Score Simulator Result{% endblock title %}
+{% load staticfiles %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-6 full-width margin-top-20percent">
+                    <h2 align="center">Score Simulator Result</h2>
+
+                    <br/>
+
+                    <h3 align="center">使用するファイル</h3>
+                    <table id="submit-table"
+                           class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline full-width">
+                        <thead>
+                        <tr>
+                            <th class="score_table">submit id</th>
+                            <th class="score_table">提出日時</th>
+                            <th class="score_table">ユーザー名</th>
+                            <th class="score_table">ファイル名</th>
+                            <th class="score_table">平均スコア</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for submit in submit_list %}
+                            <tr>
+                                <td class="score_table">{{ submit.id }}</td>
+                                <td class="score_table">{{ submit.submit_timestamp }}</td>
+                                <td class="score_table">{{ submit.username }}</td>
+                                <td class="score_table">{{ submit.filename }}</td>
+                                <td class="score_table">{{ submit.score_avg|floatformat:5 }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <br/>
+
+                    <h3 align="center">スコアシミュレーション結果</h3>
+                    <p align="center"><font size="+5">{{ simulated_score|floatformat:5 }}</font></p>
+
+                    <br/>
+
+                    <h3 align="center">結果詳細</h3>
+                    選ばれたスコアは太字で表示されています。
+                    <div class="table-responsive">
+                        <table id="submit-table"
+                               class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline full-width">
+                            <thead>
+                            <tr>
+                                <th class="score_table">submit id</th>
+
+                                {% for date in date_list %}
+                                    <th class="score_table">{{ date }}</th>
+                                {% endfor %}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for submit_id, score_row in score_flag.items %}
+                                <tr>
+                                    <td class="score_table">{{ submit_id }}</td>
+                                    {% for date, pair in score_row.items %}
+                                        {% if pair.flag == 1 %}
+                                            <td class="score_table"><b>{{ pair.score|floatformat:5 }}</b></td>
+                                        {% else %}
+                                            <td class="score_table">{{ pair.score|floatformat:5 }}</td>
+                                        {% endif %}
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

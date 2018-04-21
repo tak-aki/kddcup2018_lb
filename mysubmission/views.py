@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from submit.models import ScoreModel, SubmitModel
-import json
 import pandas as pd
-from datetime import date, timedelta
+from datetime import timedelta
 
 # Create your views here.
 def mysubmission_base_view(request):
@@ -19,7 +18,7 @@ def mysubmission_base_view(request):
 
 def mysubmission_detail_view(request):
     if request.method != 'POST':
-        return redirect(mysubmission_base_view)
+        return redirect('/mysubmission/')
 
     submit_id = request.POST['submit_id']
     submit_timestamp = request.POST['submit_timestamp']

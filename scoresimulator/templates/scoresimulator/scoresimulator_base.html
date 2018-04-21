@@ -1,0 +1,45 @@
+{% extends "submit/base.html" %}
+{% block title %}Submission List for Score Simulator{% endblock title %}
+{% load staticfiles %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-6 full-width margin-top-20percent">
+                    <h2 align="center">Submission List for Score Simulator</h2>
+                    <form method="POST" enctype="multipart/form-data" action="{% url 'scoresimulator:scoresimulator_result_view' %}">
+                        {% csrf_token %}
+                        <table id="submit-result-table"
+                               class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline full-width">
+                            <thead>
+                            <tr>
+                                <th class="score_table">選択</th>
+                                <th class="score_table">提出日時</th>
+                                <th class="score_table">ユーザー名</th>
+                                <th class="score_table">ファイル名</th>
+                                <th class="score_table">平均スコア</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for submit in ss_submits %}
+                                <tr>
+                                    <td class="score_table">
+                                        <input type="checkbox" name="scoresimulate" value={{ submit.id }}>
+                                    </td>
+                                    <td class="score_table">{{ submit.submit_timestamp }}</td>
+                                    <td class="score_table">{{ submit.username }}</td>
+                                    <td class="score_table">{{ submit.filename }}</td>
+                                    <td class="score_table">{{ submit.score_avg }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" value="submit_list">実行</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

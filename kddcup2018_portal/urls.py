@@ -24,4 +24,5 @@ urlpatterns = [
     path('mysubmission/', include('mysubmission.urls')),
     path('leaderboard/', include('leaderboard.urls')),
     path('datachart/', include('visualize.urls')),
+    path('scoresimulator/', include('scoresimulator.urls')),
 ]

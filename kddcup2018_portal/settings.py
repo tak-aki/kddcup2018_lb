@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'submit',
     'mysubmission',
+    'visualize',
     'leaderboard',
+    'scoresimulator'
 ]
 
 MIDDLEWARE = [

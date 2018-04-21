@@ -34,7 +34,9 @@
                         </tr>
                         </tbody>
                     </table>
-                        {{ unscored_date_list }}は正解データがないため採点されませんでした。
+                        {% if unscored_date_list %}
+                            {{ unscored_date_list }}は正解データがないため採点されませんでした。
+                        {% endif %}
                 </div>
             </div>
         </div>

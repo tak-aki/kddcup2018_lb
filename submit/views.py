@@ -120,6 +120,7 @@ def submit_form_view(request):
     # 「スコアシミュレーターに使う」にチェックが入っている場合、日付をチェック
     for_score_simulation = request.POST.get('for_score_simulation', False)
     if for_score_simulation:
+        for_score_simulation = True
         scoresimulator_datelist = pd.date_range('2018-03-24', '2018-04-20', freq='D').astype(str).tolist()
         if sorted(score_date_list) != sorted(scoresimulator_datelist):
             ##### 処理
@@ -163,5 +164,9 @@ def submit_form_view(request):
 
 
     # 表示ページへ投げる
-    context = {'submit_model':submit_model, 'unscored_date_list':unscored_date_list}
+    if len(unscored_date_list) > 0:
+        context = {'submit_model':submit_model, 'unscored_date_list':unscored_date_list}
+    else:
+        context = {'submit_model':submit_model, 'unscored_date_list':None}
+
     return render(request, 'submit/complete.html', context)
