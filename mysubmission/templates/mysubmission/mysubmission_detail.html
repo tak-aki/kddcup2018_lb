@@ -7,6 +7,7 @@
           <div class="row">
             <div class="col-lg-6 full-width margin-top-20percent" >
               <h2 align="center">My Submission Detail</h2>
+                    <div class="table-responsive">
                 <table id="submit-result-table" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline full-width">
                     <thead>
                       <tr>
@@ -25,19 +26,38 @@
                   </table>
 
                   <table id="submit-result-table" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline full-width">
+                    <thead>
+                      <tr>
+                        <th class="score_table" ROWSPAN="3">スコア日</th>
+                        <th class="score_table" ROWSPAN="3">スコア</th>
+                        <th class="score_table" COLSPAN="5">スコア内訳</th>
+                      </tr>
+                      <tr>
+                        <th class="score_table" COLSPAN="3">北京</th>
+                        <th class="score_table" COLSPAN="2">ロンドン</th>
+                      </tr>
+                      <tr>
+                        <th class="score_table">PM2.5</th>
+                        <th class="score_table">PM10</th>
+                        <th class="score_table">O3</th>
+                        <th class="score_table">PM2.5</th>
+                        <th class="score_table">PM10</th>
+                      </tr>
+                      </thead>
+                      {% for score in scores %}
                     <tbody>
                       <tr>
-                        <th class="score_table">スコア日</th>
-                        <th class="score_table">スコア</th>
-                      </tr>
-                      {% for score in scores %}
-                      <tr>
                         <td class="score_table">{{score.score_date}}</td>
-                        <td class="score_table">{{score.score}}</td>
+                        <td class="score_table">{{score.score|floatformat:5 }}</td>
+                        <td class="score_table">{{score.bj_pm25_score|floatformat:5 }}</td>
+                        <td class="score_table">{{score.bj_pm10_score|floatformat:5 }}</td>
+                        <td class="score_table">{{score.bj_o3_score|floatformat:5 }}</td>
+                        <td class="score_table">{{score.ld_pm25_score|floatformat:5 }}</td>
+                        <td class="score_table">{{score.ld_pm10_score|floatformat:5 }}</td>
                       </tr>
                       {% endfor %}
                       <tr>
-                        <td colspan="2">
+                        <td colspan="7">
                           {% for chart in charts %}
                           <div id="container_{{chart.city}}_{{chart.target}}" style="min-width: 310px; max-width: 1200px; height: 400px; margin: 0 auto;"></div>
                           <script type="text/javascript">
@@ -119,7 +139,8 @@
                       </tr>
                     </tbody>
                   </table>
-                  
+
+            </div>
             </div>
           </div>
         </div>

@@ -30,7 +30,8 @@ def scoresimulator_result_view(request):
     score_df_list = []
     submit_list = []
     for submit_id in submit_id_list:
-        submit_list.append(SubmitModel.objects.filter(id=submit_id)[0])
+        tmp_submit = SubmitModel.objects.filter(id=submit_id)[0]
+        submit_list.append(tmp_submit)
         score_list = ScoreModel.objects.filter(submit=submit_id)
 
         score_sr = pd.Series()

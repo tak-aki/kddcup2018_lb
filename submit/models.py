@@ -14,3 +14,8 @@ class ScoreModel(models.Model):
     submit = models.ForeignKey(SubmitModel, on_delete=models.CASCADE)
     score_date = models.DateField()
     score = models.FloatField()
+    bj_pm25_score = models.FloatField(blank=True, null=True)
+    bj_pm10_score = models.FloatField(blank=True, null=True)
+    bj_o3_score = models.FloatField(blank=True, null=True)
+    ld_pm25_score = models.FloatField(blank=True, null=True)
+    ld_pm10_score = models.FloatField(blank=True, null=True)

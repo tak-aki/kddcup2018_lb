@@ -31,7 +31,7 @@
                         <td class="score_table">{{submit.filename}}</td>
                         <td class="score_table">{{submit.score_date_start}}</td>
                         <td class="score_table">{{submit.score_date_end}}</td>
-                        <td class="score_table">{{submit.score_avg}}</td>
+                        <td class="score_table">{{submit.score_avg|floatformat:5 }}</td>
                         <td class="score_table">
                             <form method="POST" action="{% url 'mysubmission:mysubmission_detail_view' %}" >
                                 {% csrf_token %}

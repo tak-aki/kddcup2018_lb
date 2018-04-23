@@ -21,10 +21,19 @@ def calc_smape(labels, forecasts):
     sape_df[(labels == 0) & (forecasts == 0)] = 0
 
     # form the dataframe in line, drop nan, and calc SMAPE
+    bj_sape_df = sape_df.loc[sape_df.index.str.contains('_aq#')]
+    ld_sape_df = sape_df.loc[~sape_df.index.str.contains('_aq#')]
+    bj_pm25_smape = bj_sape_df['PM2.5'].dropna().mean()
+    bj_pm10_smape = bj_sape_df['PM10'].dropna().mean()
+    bj_o3_smape = bj_sape_df['O3'].dropna().mean()
+    ld_pm25_smape = ld_sape_df['PM2.5'].dropna().mean()
+    ld_pm10_smape = ld_sape_df['PM10'].dropna().mean()
+
+
     sape_array = sape_df.values.reshape([-1])
     smape = sape_array[~np.isnan(sape_array)].mean()
 
-    return smape
+    return smape, bj_pm25_smape, bj_pm10_smape, bj_o3_smape, ld_pm25_smape, ld_pm10_smape
 
 def submit_form_view(request):
     if request.method != 'POST':
@@ -114,7 +123,14 @@ def submit_form_view(request):
         if score_d[sdate]['submit'] is None:
             score_d[sdate]['score'] = '正解データなし'
         else:
-            score_d[sdate]['score'] = calc_smape(score_d[sdate]['label'], score_d[sdate]['submit'])
+            score, bj_pm25_score, bj_pm10_score, bj_o3_score, ld_pm25_score, ld_pm10_score = \
+                calc_smape(score_d[sdate]['label'], score_d[sdate]['submit'])
+            score_d[sdate]['score'] = score
+            score_d[sdate]['bj_pm25_score'] = bj_pm25_score
+            score_d[sdate]['bj_pm10_score'] = bj_pm10_score
+            score_d[sdate]['bj_o3_score'] = bj_o3_score
+            score_d[sdate]['ld_pm25_score'] = ld_pm25_score
+            score_d[sdate]['ld_pm10_score'] = ld_pm10_score
 
 
     # 「スコアシミュレーターに使う」にチェックが入っている場合、日付をチェック
@@ -158,10 +174,14 @@ def submit_form_view(request):
             score_model = ScoreModel(
                 submit = submit_model,
                 score_date = pd.to_datetime(sdate).date(),
-                score = score_d[sdate]['score']
+                score = score_d[sdate]['score'],
+                bj_pm25_score = score_d[sdate]['bj_pm25_score'],
+                bj_pm10_score = score_d[sdate]['bj_pm10_score'],
+                bj_o3_score = score_d[sdate]['bj_o3_score'],
+                ld_pm25_score = score_d[sdate]['ld_pm25_score'],
+                ld_pm10_score = score_d[sdate]['ld_pm10_score'],
                 )
             score_model.save()
-
 
     # 表示ページへ投げる
     if len(unscored_date_list) > 0:
