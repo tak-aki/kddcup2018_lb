@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from submit.models import ScoreModel, SubmitModel
 import pandas as pd
 from datetime import timedelta
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 # Create your views here.
 def mysubmission_base_view(request):
@@ -17,13 +21,12 @@ def mysubmission_base_view(request):
     return render(request, 'mysubmission/mysubmission_list.html', context)
 
 def mysubmission_detail_view(request):
-    if request.method != 'POST':
-        return redirect('/mysubmission/')
+    logger.info('request.method')
+    if request.method == 'POST':
+        submit_id = request.POST['submit_id']
+    elif request.method == 'GET':
+        submit_id = request.GET['submit_id']
 
-    submit_id = request.POST['submit_id']
-    submit_timestamp = request.POST['submit_timestamp']
-    submit_username = request.POST['submit_username']
-    submit_filename = request.POST['submit_filename']
     scores = ScoreModel.objects.filter(submit=submit_id)
 
     # for chart
@@ -92,9 +95,9 @@ def mysubmission_detail_view(request):
         'charts': charts,
         'scores': scores,
         'submit_id': submit_id,
-        'submit_timestamp' : submit_timestamp,
-        'submit_username' : submit_username,
-        'submit_filename' : submit_filename,
+        'submit_timestamp' : submit.submit_timestamp,
+        'submit_username' : submit.username,
+        'submit_filename' : submit.filename,
     }
 
     return render(request, 'mysubmission/mysubmission_detail.html', context)
