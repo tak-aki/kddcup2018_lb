@@ -84,22 +84,23 @@ london_aq_historical_other = london_aq_historical_other.loc[
 
 
 london_aq_historical_20180331 = \
-    pd.read_csv('https://biendata.com/competition/airquality/ld/2018-03-31-0/2018-03-31-23/2k0d1d8',
+    pd.read_csv('https://biendata.com/competition/airquality/ld/2018-03-31-7/2018-03-31-23/2k0d1d8',
                                             parse_dates=['time'])\
     .rename(columns={
-        'time':'record_time', 
-        'PM25_Concentration':'PM2.5', 
-        'PM10_Concentration':'PM10', 
-        'NO2_Concentration':'NO2', 
-        'CO_Concentration':'CO', 
-        'O3_Concentration':'O3', 
-        'SO2_Concentration':'SO2', 
+        'time':'record_time',
+        'PM25_Concentration':'PM2.5',
+        'PM10_Concentration':'PM10',
+        'NO2_Concentration':'NO2',
+        'CO_Concentration':'CO',
+        'O3_Concentration':'O3',
+        'SO2_Concentration':'SO2',
     }).drop('id', axis=1)\
     .sort_values(['station_id', 'record_time'])
 
-london_aq_historical_concat = pd.concat([london_aq_historical_forecast,
-                                         london_aq_historical_other,
-                                         london_aq_historical_20180331])\
+london_aq_historical_concat = pd.concat([
+    london_aq_historical_forecast.loc[london_aq_historical_forecast.record_time < pd.to_datetime('2018-03-31 07:00:00')],
+    london_aq_historical_other.loc[london_aq_historical_other.record_time < pd.to_datetime('2018-03-31 07:00:00')],
+    london_aq_historical_20180331])\
     .drop_duplicates().sort_values(['station_id', 'record_time']).reset_index(drop=True)
 
 
