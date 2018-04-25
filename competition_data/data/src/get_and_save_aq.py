@@ -25,26 +25,18 @@ def get_and_save(city, date):
 now_time = datetime.now(tz=timezone.utc)
 today = '{0}-{1:02d}-{2:02d}'.format(now_time.year, now_time.month, now_time.day)
 
-
 # 3/31から今日までの日付リスト
-date_list = pd.date_range('2018-04-01', today, freq='D').astype(str).tolist()
-
+date_list = pd.date_range('2018-04-01', today, freq='D')
 
 # すでに保存されている日付リスト
-file_bj_date_list = [file[:-4] for file in os.listdir('../official_aq_master/bj/date/')]
-file_ld_date_list = [file[:-4] for file in os.listdir('../official_aq_master/ld/date/')]
+file_bj_date_list = pd.to_datetime([file[:-4] for file in os.listdir('../official_aq_master/bj/date/')])
+file_ld_date_list = pd.to_datetime([file[:-4] for file in os.listdir('../official_aq_master/ld/date/')])
 
 # 保存されていない日は取ってくる
-#　今日のぶんははどっちにしろ持ってきて置換する
+# 　今日のぶんははどっちにしろ持ってきて置換する
 for d in date_list:
-    if d in file_bj_date_list:
-        if d == today:
-            get_and_save('bj', d)
-    else:
-        get_and_save('bj', d)
-        
-    if d in file_ld_date_list:
-        if d == today:
-            get_and_save('ld', d)
-    else:
-        get_and_save('ld', d)
+    if not (d + pd.DateOffset(1)) in file_bj_date_list:
+        get_and_save('bj', d.strftime("%Y-%m-%d"))
+
+    if not (d + pd.DateOffset(1)) in file_ld_date_list:
+        get_and_save('ld', d.strftime("%Y-%m-%d"))
