@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d4406fe-d583-4001-a5a5-052bf67a7c49" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/competition_data/data/src/get_and_save_aq.py" beforeDir="false" afterPath="$PROJECT_DIR$/competition_data/data/src/get_and_save_aq.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/submit/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/submit/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,25 +21,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mysubmission/views.py">
+      <file leaf-file-name="make_labels.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/competition_data/data/src/make_labels.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="44" column="139" lean-forward="true" selection-start-line="44" selection-start-column="118" selection-end-line="44" selection-end-column="139" />
+            <state relative-caret-position="383">
+              <caret line="48" column="88" lean-forward="true" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="88" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/submit/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
               <folding>
-                <element signature="e#0#45#0" expanded="true" />
+                <element signature="e#0#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="get_and_save_aq.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/competition_data/data/src/get_and_save_aq.py">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scoresimulator/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
+            <state relative-caret-position="268">
+              <caret line="81" column="114" lean-forward="true" selection-start-line="81" selection-start-column="114" selection-end-line="83" selection-end-column="113" />
               <folding>
-                <element signature="e#17#36#0" expanded="true" />
+                <element signature="e#0#45#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -68,6 +76,7 @@
       <find>for_score_simulation</find>
       <find>submit_list</find>
       <find>chart_data_series</find>
+      <find>bj_submission_stationid_convert_dict</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
@@ -114,11 +123,11 @@
         <option value="$PROJECT_DIR$/scoresimulator/templates/scoresimulator/scoresimulator_base.html" />
         <option value="$PROJECT_DIR$/scoresimulator/templates/scoresimulator/scoresimulator_result.html" />
         <option value="$PROJECT_DIR$/submit/models.py" />
-        <option value="$PROJECT_DIR$/submit/views.py" />
         <option value="$PROJECT_DIR$/mysubmission/templates/mysubmission/mysubmission_detail.html" />
         <option value="$PROJECT_DIR$/mysubmission/templates/mysubmission/mysubmission_list.html" />
         <option value="$PROJECT_DIR$/scoresimulator/views.py" />
         <option value="$PROJECT_DIR$/competition_data/data/src/get_and_save_aq.py" />
+        <option value="$PROJECT_DIR$/submit/views.py" />
       </list>
     </option>
   </component>
@@ -532,20 +541,6 @@
     <entry file="file://$PROJECT_DIR$/competition_data/data/official_aq_master/bj/date/2018-04-01.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/competition_data/data/src/make_labels.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="52" column="82" selection-start-line="52" selection-start-column="52" selection-end-line="52" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/competition_data/data/src/modify_original_files.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="107" selection-start-line="107" selection-end-line="107" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/submit/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -652,16 +647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scoresimulator/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mysubmission/templates/mysubmission/mysubmission_detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="735">
@@ -697,20 +682,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/submit/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mysubmission/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="44" column="139" lean-forward="true" selection-start-line="44" selection-start-column="118" selection-end-line="44" selection-end-column="139" />
+        <state relative-caret-position="207">
+          <caret line="47" column="139" lean-forward="true" selection-start-line="47" selection-start-column="139" selection-end-line="47" selection-end-column="139" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
@@ -720,9 +695,43 @@
     <entry file="file://$PROJECT_DIR$/competition_data/data/src/get_and_save_aq.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="615">
-          <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
+          <caret line="41" column="22" lean-forward="true" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
           <folding>
             <element signature="e#17#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/competition_data/data/src/modify_original_files.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scoresimulator/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="81" column="114" lean-forward="true" selection-start-line="81" selection-start-column="114" selection-end-line="83" selection-end-column="113" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/competition_data/data/src/make_labels.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="48" column="88" lean-forward="true" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/submit/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>

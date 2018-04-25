@@ -63,6 +63,23 @@ def submit_form_view(request):
     # サブミットファイルを読み込み
     submit_file_df = pd.read_csv(filepath)
 
+    # stationId の変換（新旧フォーマット対応）
+    bj_submission_stationid_convert_dict = {
+        'aotizhongxin_aq': 'aotizhongx_aq',
+        'fengtaihuayuan_aq': 'fengtaihua_aq',
+        'miyunshuiku_aq': 'miyunshuik_aq',
+        'nongzhanguan_aq': 'nongzhangu_aq',
+        'wanshouxigong_aq': 'wanshouxig_aq',
+        'xizhimenbei_aq': 'xizhimenbe_aq',
+        'yongdingmennei_aq': 'yongdingme_aq'
+    }
+    submit_file_df['station_id'] = submit_file_df['test_id'].str.split('#').apply(lambda x: x[0])
+    submit_file_df['hour_num'] = submit_file_df['test_id'].str.split('#').apply(lambda x: x[1])
+    submit_file_df['station_id'] = submit_file_df['station_id'].replace(bj_submission_stationid_convert_dict)
+    submit_file_df['test_id'] = submit_file_df['station_id'] + '#' + submit_file_df['hour_num']
+    submit_file_df.drop(['station_id', 'hour_num'], axis=1, inplace=True)
+    submit_file_df.to_csv(filepath, index=False)
+
     # 列の数があってなかったらエラーページを表示
     if submit_file_df.columns.shape != (5,):
         ##### 処理
@@ -87,7 +104,6 @@ def submit_form_view(request):
     if date_check_sr.sum() != date_check_sr.shape[0]:
         ##### 処理
         raise NotImplementedError('score_dateのフォーマットが違う')
-
 
     # 日べつに、サブミットファイルと正解ファイルを辞書に格納
     score_d = {}
