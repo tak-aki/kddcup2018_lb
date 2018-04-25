@@ -33,12 +33,8 @@
                         <td class="score_table">{{submit.score_date_end}}</td>
                         <td class="score_table">{{submit.score_avg|floatformat:5 }}</td>
                         <td class="score_table">
-                            <form method="POST" action="{% url 'mysubmission:mysubmission_detail_view' %}" >
-                                {% csrf_token %}
+                            <form method="GET" action="{% url 'mysubmission:mysubmission_detail_view' %}" >
                                 <input type="hidden" name="submit_id" value={{submit.id}}>
-                                <input type="hidden" name="submit_timestamp" value={{submit.submit_timestamp}}>
-                                <input type="hidden" name="submit_username" value={{submit.username}}>
-                                <input type="hidden" name="submit_filename" value={{submit.filename}}>
                                 <button type="submit" class="btn btn-primary btn-block" value="detail">詳細
                                 </button>
                             </form>
