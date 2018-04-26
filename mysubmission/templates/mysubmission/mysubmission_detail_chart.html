@@ -1,74 +1,28 @@
 {% extends "submit/base.html" %}
-{% block title %}My Submission Detail{% endblock title %}
+{% block title %}My Submission Detail Chart{% endblock title %}
 {% load staticfiles %}
       {% block body %}
       <div id="wrapper">
         <div id="page-wrapper">
           <div class="row">
             <div class="col-lg-6 full-width margin-top-20percent" >
-              <h2 align="center">My Submission Detail</h2>
-                    <div class="table-responsive">
-                <table id="submit-result-table" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline full-width">
-                    <thead>
-                      <tr>
-                        <th class="score_table">提出日時</th>
-                        <th class="score_table">ユーザー名</th>
-                        <th class="score_table">ファイル名</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="score_table">{{submit_timestamp}}</td>
-                        <td class="score_table">{{submit_username}}</td>
-                        <td class="score_table">{{submit_filename}}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-
+              <h2 align="center">My Submission Detail Chart {{city}} {{target}}</h2>
+                <div class="table-responsive">
                   <table id="submit-result-table" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline full-width">
-                    <thead>
-                      <tr>
-                        <th class="score_table" ROWSPAN="3">スコア日</th>
-                        <th class="score_table" ROWSPAN="3">スコア</th>
-                        <th class="score_table" COLSPAN="5">スコア内訳</th>
-                      </tr>
-                      <tr>
-                        <th class="score_table" COLSPAN="3">北京</th>
-                        <th class="score_table" COLSPAN="2">ロンドン</th>
-                      </tr>
-                      <tr>
-                        <th class="score_table">PM2.5</th>
-                        <th class="score_table">PM10</th>
-                        <th class="score_table">O3</th>
-                        <th class="score_table">PM2.5</th>
-                        <th class="score_table">PM10</th>
-                      </tr>
-                      </thead>
-                      {% for score in scores %}
                     <tbody>
-                      <tr>
-                        <td class="score_table">{{score.score_date}}</td>
-                        <td class="score_table">{{score.score|floatformat:5 }}</td>
-                        <td class="score_table"><a href="{% url 'mysubmission:mysubmission_detail_chart_view' %}?submit_id={{submit_id}}&city=bj&target=PM2.5&score_date={{score.score_date|safe}}">{{score.bj_pm25_score|floatformat:5 }}</a> </td>
-                        <td class="score_table"><a href="{% url 'mysubmission:mysubmission_detail_chart_view' %}?submit_id={{submit_id}}&city=bj&target=PM10&score_date={{score.score_date|safe}}">{{score.bj_pm10_score|floatformat:5 }}</a></td>
-                        <td class="score_table"><a href="{% url 'mysubmission:mysubmission_detail_chart_view' %}?submit_id={{submit_id}}&city=bj&target=O3&score_date={{score.score_date|safe}}">{{score.bj_o3_score|floatformat:5 }}</a></td>
-                        <td class="score_table"><a href="{% url 'mysubmission:mysubmission_detail_chart_view' %}?submit_id={{submit_id}}&city=ld&target=PM2.5&score_date={{score.score_date|safe}}">{{score.ld_pm25_score|floatformat:5 }}</a></td>
-                        <td class="score_table"><a href="{% url 'mysubmission:mysubmission_detail_chart_view' %}?submit_id={{submit_id}}&city=bj&target=PM10&score_date={{score.score_date|safe}}">{{score.ld_pm10_score|floatformat:5 }}</a></td>
-                      </tr>
-                      {% endfor %}
                       <tr>
                         <td colspan="7">
                           {% for chart in charts %}
-                          <div id="container_{{chart.city}}_{{chart.target}}" style="min-width: 310px; max-width: 1200px; height: 400px; margin: 0 auto;"></div>
+                          <div id="container_{{chart.station}}" style="min-width: 310px; max-width: 1200px; height: 400px; margin: 0 auto;"></div>
                           <script type="text/javascript">
                             Highcharts.setOptions({
                                 global : {
                                     useUTC : false
                                 }
                             });
-                            Highcharts.chart('container_{{chart.city}}_{{chart.target}}', {
+                            Highcharts.chart('container_{{chart.station}}', {
                               title: {
-                                  text: '{{chart.city}} {{chart.target}}'
+                                  text: '{{city}} {{target}} {{chart.station}}'
                               },
 
                               subtitle: {
@@ -89,7 +43,7 @@
 
                               yAxis: {
                                   title: {
-                                      text: '{{chart.target}}'
+                                      text: '{{target}}'
                                   }
                               },
                               legend: {
