@@ -21,6 +21,7 @@ def get_and_save(city, date):
                         'SO2_Concentration':'SO2', 
                     }).drop('id', axis=1)\
                     .sort_values(['station_id', 'record_time'])
+    aq = aq.loc[~aq[['station_id', 'record_time']].duplicated(keep='last')]
     aq.to_csv(os.path.join(home, 'data/official_aq_master/{0}/date/{1}.csv'.format(city, date)), index=False)
 
 # 今日の日付を取ってくる

@@ -7,13 +7,13 @@ home = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 ld_forecast_stationid = pd.read_csv(\
     os.path.join(home, 'input', 'London_historical_aqi_forecast_stations_20180331.csv'))['station_id'].unique().tolist()
 bj_submission_stationid_convert_dict = {
-    'aotizhongxin_aq' : 'aotizhongx_aq',
-    'fengtaihuayuan_aq' : 'fengtaihua_aq',
-    'miyunshuiku_aq' : 'miyunshuik_aq',
-    'nongzhanguan_aq' : 'nongzhangu_aq',
-    'wanshouxigong_aq' : 'wanshouxig_aq',
-    'xizhimenbei_aq' : 'xizhimenbe_aq',
-    'yongdingmennei_aq' : 'yongdingme_aq'
+     'aotizhongx_aq' : 'aotizhongxin_aq',
+     'fengtaihua_aq' : 'fengtaihuayuan_aq',
+     'miyunshuik_aq' : 'miyunshuiku_aq',
+     'nongzhangu_aq' : 'nongzhanguan_aq',
+     'wanshouxig_aq' : 'wanshouxigong_aq',
+     'xizhimenbe_aq' : 'xizhimenbei_aq',
+     'yongdingme_aq' : 'yongdingmennei_aq'
 }
 
 # ラベルディレクトリがなかったら作成
