@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.conf import settings
 from submit.models import SubmitModel, ScoreModel
 import os
@@ -63,16 +63,17 @@ def submit_form_view(request):
     # サブミットファイルを読み込み
     submit_file_df = pd.read_csv(filepath)
 
-    # stationId の変換（新旧フォーマット対応）
+    # stationId の変換（旧フォーマットを新フォーマットに変換）
     bj_submission_stationid_convert_dict = {
-        'aotizhongxin_aq': 'aotizhongx_aq',
-        'fengtaihuayuan_aq': 'fengtaihua_aq',
-        'miyunshuiku_aq': 'miyunshuik_aq',
-        'nongzhanguan_aq': 'nongzhangu_aq',
-        'wanshouxigong_aq': 'wanshouxig_aq',
-        'xizhimenbei_aq': 'xizhimenbe_aq',
-        'yongdingmennei_aq': 'yongdingme_aq'
+        'aotizhongx_aq': 'aotizhongxin_aq',
+        'fengtaihua_aq': 'fengtaihuayuan_aq',
+        'miyunshuik_aq': 'miyunshuiku_aq',
+        'nongzhangu_aq': 'nongzhanguan_aq',
+        'wanshouxig_aq': 'wanshouxigong_aq',
+        'xizhimenbe_aq': 'xizhimenbei_aq',
+        'yongdingme_aq': 'yongdingmennei_aq'
     }
+
     submit_file_df['station_id'] = submit_file_df['test_id'].str.split('#').apply(lambda x: x[0])
     submit_file_df['hour_num'] = submit_file_df['test_id'].str.split('#').apply(lambda x: x[1])
     submit_file_df['station_id'] = submit_file_df['station_id'].replace(bj_submission_stationid_convert_dict)
@@ -206,3 +207,132 @@ def submit_form_view(request):
         context = {'submit_model':submit_model, 'unscored_date_list':None}
 
     return render(request, 'submit/complete.html', context)
+
+
+def update_view(request):
+    submit_filename_list = SubmitModel.objects.order_by('filename').values_list('filename').distinct()
+
+
+    for submit_filename_org in submit_filename_list:
+
+        samename_submit_id_list = SubmitModel.objects\
+            .filter(filename=submit_filename_org[0]).order_by('submit_timestamp').values_list('id', flat=True)
+
+        submit_id = samename_submit_id_list.reverse()[0] #最近のサブミットを採用
+        submit = SubmitModel.objects.filter(id=submit_id)[0]
+
+        username = submit.username
+        submit_file_name = submit.filename
+        submit_time = submit.submit_timestamp
+        for_score_simulation = submit.for_score_simulation
+
+        # サブミットファイル保存
+        userpath = os.path.join(UPLOAD_DIR, username)
+        filepath = os.path.join(userpath, submit_file_name)
+
+        # サブミットファイルを読み込み
+        submit_file_df = pd.read_csv(filepath)
+
+        # stationId の変換（旧フォーマットを新フォーマットに変換）
+        bj_submission_stationid_convert_dict = {
+            'aotizhongx_aq': 'aotizhongxin_aq',
+            'fengtaihua_aq': 'fengtaihuayuan_aq',
+            'miyunshuik_aq': 'miyunshuiku_aq',
+            'nongzhangu_aq': 'nongzhanguan_aq',
+            'wanshouxig_aq': 'wanshouxigong_aq',
+            'xizhimenbe_aq': 'xizhimenbei_aq',
+            'yongdingme_aq': 'yongdingmennei_aq'
+        }
+
+        submit_file_df['station_id'] = submit_file_df['test_id'].str.split('#').apply(lambda x: x[0])
+        submit_file_df['hour_num'] = submit_file_df['test_id'].str.split('#').apply(lambda x: x[1])
+        submit_file_df['station_id'] = submit_file_df['station_id'].replace(bj_submission_stationid_convert_dict)
+        submit_file_df['test_id'] = submit_file_df['station_id'] + '#' + submit_file_df['hour_num']
+        submit_file_df.drop(['station_id', 'hour_num'], axis=1, inplace=True)
+
+        # 日付リストを取得
+        score_date_list = submit_file_df.score_date.unique()
+
+        # 日べつに、サブミットファイルと正解ファイルを辞書に格納
+        score_d = {}
+        for sdate in score_date_list:
+            if os.path.exists(os.path.join(LABELFILE_DIR, sdate+'.csv')):
+                score_d[sdate] = {
+                    'date' : pd.to_datetime(sdate).date(),
+                    'submit' : submit_file_df\
+                        .loc[submit_file_df['score_date'] == sdate, ['test_id', 'PM2.5', 'PM10', 'O3']]\
+                        .set_index('test_id'),
+                    'label' : pd.read_csv(os.path.join(LABELFILE_DIR, sdate+'.csv'), index_col=['test_id'])
+                }
+            else:
+                score_d[sdate] = {
+                    'date' : pd.to_datetime(sdate).date(),
+                    'submit' : None,
+                    'label' : None
+                }
+
+
+        # scoreを計算
+        for sdate in score_date_list:
+            if score_d[sdate]['submit'] is None:
+                score_d[sdate]['score'] = '正解データなし'
+            else:
+                score, bj_pm25_score, bj_pm10_score, bj_o3_score, ld_pm25_score, ld_pm10_score = \
+                    calc_smape(score_d[sdate]['label'], score_d[sdate]['submit'])
+                score_d[sdate]['score'] = score
+                score_d[sdate]['bj_pm25_score'] = bj_pm25_score
+                score_d[sdate]['bj_pm10_score'] = bj_pm10_score
+                score_d[sdate]['bj_o3_score'] = bj_o3_score
+                score_d[sdate]['ld_pm25_score'] = ld_pm25_score
+                score_d[sdate]['ld_pm10_score'] = ld_pm10_score
+
+        # average scoreを計算
+        score_list = []
+        date_list = []
+        for sdate in score_date_list:
+            if not score_d[sdate]['submit'] is None:
+                date_list.append(score_d[sdate]['date'])
+                score_list.append(score_d[sdate]['score'])
+        avg_score = np.mean(score_list)
+        score_date_start = np.min(date_list)
+        score_date_end = np.max(date_list)
+
+        # submitを登録
+        submit_file_df.to_csv(filepath, index=False)
+        submit_model = SubmitModel(
+            id=submit_id,
+            username=username,
+            filename=submit_file_name,
+            submit_timestamp=submit_time,
+            score_date_start=score_date_start,
+            score_date_end=score_date_end,
+            score_avg=avg_score,
+            for_score_simulation=for_score_simulation
+        )
+        submit_model.save()
+
+        # 同一名の他のsubmitとscoreを削除
+        for del_sub_id in samename_submit_id_list:
+            del_sub = SubmitModel.objects.filter(id=del_sub_id)[0]
+            del_score_list = ScoreModel.objects.filter(submit=del_sub)
+            for del_score in del_score_list:
+                del_score.delete()
+            del_sub.delete()
+
+        submit_model.save()
+        # scoreを登録
+        for sdate in score_date_list:
+            if not score_d[sdate]['submit'] is None:
+                score_model = ScoreModel(
+                    submit = submit,
+                    score_date = pd.to_datetime(sdate).date(),
+                    score = score_d[sdate]['score'],
+                    bj_pm25_score = score_d[sdate]['bj_pm25_score'],
+                    bj_pm10_score = score_d[sdate]['bj_pm10_score'],
+                    bj_o3_score = score_d[sdate]['bj_o3_score'],
+                    ld_pm25_score = score_d[sdate]['ld_pm25_score'],
+                    ld_pm10_score = score_d[sdate]['ld_pm10_score'],
+                    )
+                score_model.save()
+
+    return redirect('/submit/')
