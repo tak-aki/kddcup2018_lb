@@ -147,7 +147,7 @@ def mysubmission_detail_chart_view(request):
 
     submit_data_stations = {}
     for station in label_data_stations.keys():
-        submit_data_stations[station] = temp_submit.loc[temp_submit['stationId']==station, ['datetime',target]].set_index('datetime')
+        submit_data_stations[station] = temp_submit.loc[temp_submit['stationId']==station, ['datetime',target]].set_index('datetime').sort_index()
 
     charts = []
     for station in sorted(label_data_stations.keys()):
