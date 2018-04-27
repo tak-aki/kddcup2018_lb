@@ -165,6 +165,11 @@ def submit_form_view(request):
 
     # average scoreを計算
     score_list = []
+    score_bj_pm25_list = []
+    score_bj_pm10_list = []
+    score_bj_o3_list = []
+    score_ld_pm25_list = []
+    score_ld_pm10_list = []
     date_list = []
     for sdate in score_date_list:
         if not score_d[sdate]['submit'] is None:
