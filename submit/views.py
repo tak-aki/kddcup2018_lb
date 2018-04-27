@@ -170,7 +170,17 @@ def submit_form_view(request):
         if not score_d[sdate]['submit'] is None:
             date_list.append(score_d[sdate]['date'])
             score_list.append(score_d[sdate]['score'])
+            score_bj_pm25_list.append(score_d[sdate]['bj_pm25_score'])
+            score_bj_pm10_list.append(score_d[sdate]['bj_pm10_score'])
+            score_bj_o3_list.append(score_d[sdate]['bj_o3_score'])
+            score_ld_pm25_list.append(score_d[sdate]['ld_pm25_score'])
+            score_ld_pm10_list.append(score_d[sdate]['ld_pm10_score'])
     avg_score = np.mean(score_list)
+    avg_bj_pm25_score = np.mean(score_bj_pm25_list)
+    avg_bj_pm10_score = np.mean(score_bj_pm10_list)
+    avg_bj_o3_score = np.mean(score_bj_o3_list)
+    avg_ld_pm25_score = np.mean(score_ld_pm25_list)
+    avg_ld_pm10_score = np.mean(score_ld_pm10_list)
     score_date_start = np.min(date_list)
     score_date_end = np.max(date_list)
 
@@ -181,6 +191,11 @@ def submit_form_view(request):
         score_date_start = score_date_start,
         score_date_end = score_date_end,
         score_avg = avg_score,
+        avg_bj_pm25_score=avg_bj_pm25_score,
+        avg_bj_pm10_score=avg_bj_pm10_score,
+        avg_bj_o3_score=avg_bj_o3_score,
+        avg_ld_pm25_score=avg_ld_pm25_score,
+        avg_ld_pm10_score=avg_ld_pm10_score,
         for_score_simulation=for_score_simulation
     )
     submit_model.save()
@@ -288,12 +303,27 @@ def update_view(request):
 
         # average scoreを計算
         score_list = []
+        score_bj_pm25_list = []
+        score_bj_pm10_list = []
+        score_bj_o3_list = []
+        score_ld_pm25_list = []
+        score_ld_pm10_list = []
         date_list = []
         for sdate in score_date_list:
             if not score_d[sdate]['submit'] is None:
                 date_list.append(score_d[sdate]['date'])
                 score_list.append(score_d[sdate]['score'])
+                score_bj_pm25_list.append(score_d[sdate]['bj_pm25_score'])
+                score_bj_pm10_list.append(score_d[sdate]['bj_pm10_score'])
+                score_bj_o3_list.append(score_d[sdate]['bj_o3_score'])
+                score_ld_pm25_list.append(score_d[sdate]['ld_pm25_score'])
+                score_ld_pm10_list.append(score_d[sdate]['ld_pm10_score'])
         avg_score = np.mean(score_list)
+        avg_bj_pm25_score = np.mean(score_bj_pm25_list)
+        avg_bj_pm10_score = np.mean(score_bj_pm10_list)
+        avg_bj_o3_score = np.mean(score_bj_o3_list)
+        avg_ld_pm25_score = np.mean(score_ld_pm25_list)
+        avg_ld_pm10_score = np.mean(score_ld_pm10_list)
         score_date_start = np.min(date_list)
         score_date_end = np.max(date_list)
 
@@ -307,6 +337,11 @@ def update_view(request):
             score_date_start=score_date_start,
             score_date_end=score_date_end,
             score_avg=avg_score,
+            avg_bj_pm25_score=avg_bj_pm25_score,
+            avg_bj_pm10_score=avg_bj_pm10_score,
+            avg_bj_o3_score=avg_bj_o3_score,
+            avg_ld_pm25_score=avg_ld_pm25_score,
+            avg_ld_pm10_score=avg_ld_pm10_score,
             for_score_simulation=for_score_simulation
         )
         submit_model.save()

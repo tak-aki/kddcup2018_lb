@@ -7,6 +7,11 @@ class SubmitModel(models.Model):
     score_date_start = models.DateField()
     score_date_end = models.DateField()
     score_avg = models.FloatField()
+    avg_bj_pm25_score = models.FloatField(blank=True, null=True)
+    avg_bj_pm10_score = models.FloatField(blank=True, null=True)
+    avg_bj_o3_score = models.FloatField(blank=True, null=True)
+    avg_ld_pm25_score = models.FloatField(blank=True, null=True)
+    avg_ld_pm10_score = models.FloatField(blank=True, null=True)
     for_score_simulation = models.BooleanField(default=False)
 
 

@@ -8,38 +8,58 @@
             <div class="row">
                 <div class="col-lg-6 full-width margin-top-20percent">
                     <h2 align="center">Submission List for Score Simulator</h2>
-                    <form method="POST" enctype="multipart/form-data" action="{% url 'scoresimulator:scoresimulator_result_view' %}">
-                        {% csrf_token %}
-                        <table id="submit-result-table"
-                               class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline full-width">
-                            <thead>
-                            <tr>
-                                <th class="score_table">選択</th>
-                                <th class="score_table">提出日時</th>
-                                <th class="score_table">ユーザー名</th>
-                                <th class="score_table">ファイル名</th>
-                                <th class="score_table">平均スコア</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for submit in ss_submits %}
+                    <div class="table-responsive">
+                        <form method="POST" enctype="multipart/form-data"
+                              action="{% url 'scoresimulator:scoresimulator_result_view' %}">
+                            {% csrf_token %}
+                            <table id="submit-result-table"
+                                   class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline full-width">
+                                <thead>
                                 <tr>
-                                    <td class="score_table">
-                                        <input type="checkbox" name="scoresimulate" value={{ submit.id }}>
-                                    </td>
-                                    <td class="score_table">{{ submit.submit_timestamp }}</td>
-                                    <td class="score_table">{{ submit.username }}</td>
-                                    <td class="score_table">{{ submit.filename }}</td>
-                                    <td class="score_table">{{ submit.score_avg }}</td>
+                                    <th class="score_table" ROWSPAN="3">選択</th>
+                                    <th class="score_table" ROWSPAN="3">提出日時</th>
+                                    <th class="score_table" ROWSPAN="3">ユーザー名</th>
+                                    <th class="score_table" ROWSPAN="3">ファイル名</th>
+                                    <th class="score_table" ROWSPAN="3">平均スコア</th>
+                                    <th class="score_table" COLSPAN="5">スコア内訳</th>
                                 </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                        <button type="submit" class="btn btn-primary btn-lg btn-block" value="submit_list">実行</button>
-                    </form>
+                                <tr>
+                                    <th class="score_table" COLSPAN="3">北京</th>
+                                    <th class="score_table" COLSPAN="2">ロンドン</th>
+                                </tr>
+                                <tr>
+                                    <th class="score_table">PM2.5</th>
+                                    <th class="score_table">PM10</th>
+                                    <th class="score_table">O3</th>
+                                    <th class="score_table">PM2.5</th>
+                                    <th class="score_table">PM10</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for submit in ss_submits %}
+                                    <tr>
+                                        <td class="score_table">
+                                            <input type="checkbox" name="scoresimulate" value={{ submit.id }}>
+                                        </td>
+                                        <td class="score_table">{{ submit.submit_timestamp }}</td>
+                                        <td class="score_table">{{ submit.username }}</td>
+                                        <td class="score_table">{{ submit.filename }}</td>
+                                        <td class="score_table">{{ submit.score_avg|floatformat:5 }}</td>
+                                        <td class="score_table">{{ submit.avg_bj_pm25_score|floatformat:5 }}</td>
+                                        <td class="score_table">{{ submit.avg_bj_pm10_score|floatformat:5 }}</td>
+                                        <td class="score_table">{{ submit.avg_bj_o3_score|floatformat:5 }}</td>
+                                        <td class="score_table">{{ submit.avg_ld_pm25_score|floatformat:5 }}</td>
+                                        <td class="score_table">{{ submit.avg_ld_pm10_score|floatformat:5 }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" value="submit_list">実行
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 {% endblock %}
