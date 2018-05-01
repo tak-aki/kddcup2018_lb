@@ -37,7 +37,7 @@ def mysubmission_detail_view(request):
     for city in ['beijing','london']:
         dir_name = "bj" if city == "beijing" else "ld"
         temp_label_data = pd.DataFrame(index=[], columns=['station_id','record_time','PM2.5','PM10','NO2','CO','O3','SO2'])
-        for p in pd.date_range(submit.score_date_start - timedelta(days = 7),submit.score_date_end + timedelta(days = 2)):
+        for p in pd.date_range(submit.score_date_start - timedelta(days = 1),submit.score_date_end + timedelta(days = 2)):
             temp = pd.read_csv("./competition_data/data/official_aq_master/"+dir_name+"/date/"+p.strftime("%Y-%m-%d") + ".csv")
             temp_label_data = pd.concat([temp_label_data,temp],axis=0)
         temp_label_data = temp_label_data.loc[:,['record_time','PM2.5','PM10','O3']].groupby(['record_time']).median()
