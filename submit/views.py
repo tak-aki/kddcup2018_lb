@@ -154,13 +154,13 @@ def submit_form_view(request):
     for_score_simulation = request.POST.get('for_score_simulation', False)
     if for_score_simulation:
         for_score_simulation = True
-        scoresimulator_datelist = pd.date_range('2018-03-24', '2018-04-20', freq='D').astype(str).tolist()
-        if sorted(score_date_list) != sorted(scoresimulator_datelist):
+        scoresimulator_datelist = pd.date_range('2018-03-24', '2018-04-20', freq='D')
+        if not scoresimulator_datelist.isin(score_date_list).all():
             ##### 処理
-            raise NotImplementedError('日付が足りないor多すぎます（スコアシミュレーター用）')
-        if len(unscored_date_list) != 0:
-            ##### 処理
-            raise NotImplementedError('まだ正解データが揃っていません（スコアシミュレーター用）')
+            raise NotImplementedError('日付が足りない（スコアシミュレーター用）')
+        #if len(unscored_date_list) != 0:
+        #    ##### 処理
+        #    raise NotImplementedError('まだ正解データが揃っていません（スコアシミュレーター用）')
 
 
     # average scoreを計算
