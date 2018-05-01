@@ -98,6 +98,7 @@ def mysubmission_detail_view(request):
         'submit_timestamp' : submit.submit_timestamp,
         'submit_username' : submit.username,
         'submit_filename' : submit.filename,
+        'submit_score_avg' : submit.score_avg,
     }
 
     return render(request, 'mysubmission/mysubmission_detail.html', context)

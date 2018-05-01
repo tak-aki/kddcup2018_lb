@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d4406fe-d583-4001-a5a5-052bf67a7c49" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/mysubmission/templates/mysubmission/mysubmission_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysubmission/templates/mysubmission/mysubmission_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysubmission/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysubmission/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -69,11 +70,20 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mysubmission/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="39" column="75" selection-start-line="39" selection-start-column="75" selection-end-line="39" selection-end-column="75" />
+            <state relative-caret-position="596">
+              <caret line="100" column="25" selection-start-line="100" selection-start-column="9" selection-end-line="100" selection-end-column="25" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mysubmission_detail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mysubmission/templates/mysubmission/mysubmission_detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="66" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -143,7 +153,6 @@
         <option value="$PROJECT_DIR$/submit/templates/submit/submit_form.html" />
         <option value="$PROJECT_DIR$/submit/templates/submit/base.html" />
         <option value="$PROJECT_DIR$/scoresimulator/templates/scoresimulator/scoresimulator_result.html" />
-        <option value="$PROJECT_DIR$/mysubmission/templates/mysubmission/mysubmission_detail.html" />
         <option value="$PROJECT_DIR$/mysubmission/templates/mysubmission/mysubmission_list.html" />
         <option value="$PROJECT_DIR$/competition_data/data/src/modify_original_files.py" />
         <option value="$PROJECT_DIR$/competition_data/data/src/get_and_save_aq.py" />
@@ -155,6 +164,7 @@
         <option value="$PROJECT_DIR$/scoresimulator/templates/scoresimulator/scoresimulator_base.html" />
         <option value="$PROJECT_DIR$/submit/views.py" />
         <option value="$PROJECT_DIR$/mysubmission/views.py" />
+        <option value="$PROJECT_DIR$/mysubmission/templates/mysubmission/mysubmission_detail.html" />
       </list>
     </option>
   </component>
@@ -820,13 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysubmission/templates/mysubmission/mysubmission_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="58" lean-forward="true" selection-start-line="8" selection-start-column="58" selection-end-line="9" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/submit/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -867,10 +870,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mysubmission/templates/mysubmission/mysubmission_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="66" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mysubmission/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="39" column="75" selection-start-line="39" selection-start-column="75" selection-end-line="39" selection-end-column="75" />
+        <state relative-caret-position="596">
+          <caret line="100" column="25" selection-start-line="100" selection-start-column="9" selection-end-line="100" selection-end-column="25" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
