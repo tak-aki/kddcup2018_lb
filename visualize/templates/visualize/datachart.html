@@ -9,21 +9,93 @@
                 <div class="col-lg-6 full-width margin-top-20percent">
                     <h2 align="center">Data Chart</h2>
 
-
+                    <!--
                     <ul class="nav nav-pills">
                         <li class="active"><a href="#beijing_aq" data-toggle="tab">北京</a></li>
                         <li><a href="#london_aq" data-toggle="tab">ロンドン</a></li>
                     </ul>
+                    -->
 
                     <!-- タブ内容 -->
                     <div class="tab-content">
-                        <div class="tab-pane active" id="beijing_aq">
+                          {% for chart in charts %}
+                          <a href="">{{chart.city}} {{chart.target}} detail</a>
+                          <div id="container_{{chart.city}}_{{chart.target}}" style="min-width: 310px; max-width: 1200px; height: 400px; margin: 0 auto;"></div>
+                          <script type="text/javascript">
+                            Highcharts.setOptions({
+                                global : {
+                                    useUTC : false
+                                }
+                            });
+                            Highcharts.chart('container_{{chart.city}}_{{chart.target}}', {
+                              title: {
+                                  text: '{{chart.city}} {{chart.target}}'
+                              },
 
-                            <div id="bj_pm25_chart_container"></div>
-                        </div>
-                        <div class="tab-pane" id="london_aq">
-                            <p>タブＢの内容</p>
-                        </div>
+                              subtitle: {
+                                  text: ''
+                              },
+
+                              xAxis: {
+                                type: 'datetime',
+                                dateTimeLabelFormats: {
+                                        minute: '%H:%M',
+                                        hour: '%m/%d %H:%M',
+                                        day: '%Y/%m/%d',
+                                        week: '%Y/%m/%d',
+                                        month: '%Y/%m',
+                                        year: '(%Y)'
+                                    }
+                              },
+
+                              yAxis: {
+                                  title: {
+                                      text: '{{chart.target}}'
+                                  }
+                              },
+                              legend: {
+                                  layout: 'vertical',
+                                  align: 'right',
+                                  verticalAlign: 'middle'
+                              },
+
+                              plotOptions: {
+                                  series: {
+                                      label: {
+                                          connectorAllowed: false
+                                      },
+                                      pointStart: 2010
+                                  }
+                              },
+
+                              series: [
+                              {% for chart_data in chart.chart_data_series %}
+                              {
+                                  name: '{{chart_data.name}}',
+                                  data: {{chart_data.data|safe}},
+                                  pointStart: Date.parse('{{chart_data.start_dt|safe}}'),
+                                  pointInterval: 3600 * 1000
+                              },
+                              {% endfor %}
+                              ],
+
+                              responsive: {
+                                  rules: [{
+                                      condition: {
+                                          maxWidth: 500
+                                      },
+                                      chartOptions: {
+                                          legend: {
+                                              layout: 'horizontal',
+                                              align: 'center',
+                                              verticalAlign: 'bottom'
+                                          }
+                                      }
+                                  }]
+                              }
+                            });
+                          </script>
+                          {% endfor %}
                     </div>
 
                 </div>

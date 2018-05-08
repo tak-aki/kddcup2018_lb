@@ -25,5 +25,6 @@ urlpatterns = [
     path('leaderboard/', include('leaderboard.urls')),
     path('datachart/', include('visualize.urls')),
     path('scoresimulator/', include('scoresimulator.urls')),
+    path('visualize/', include('visualize.urls')),
     path('update/', submit_views.update_view) #スコアとかを再計算する
 ]
