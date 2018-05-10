@@ -18,18 +18,17 @@
 
                     <!-- タブ内容 -->
                     <div class="tab-content">
-                          {% for chart in charts %}
-                          <a href="./detail?city={{chart.city}}&{{chart.target}}">{{chart.city}} {{chart.target}} detail</a>
-                          <div id="container_{{chart.city}}_{{chart.target}}" style="min-width: 310px; max-width: 1200px; height: 400px; margin: 0 auto;"></div>
+                        {% for chart in charts %}
+                          <div id="container_{{chart.station}}" style="min-width: 310px; max-width: 1200px; height: 400px; margin: 0 auto;"></div>
                           <script type="text/javascript">
                             Highcharts.setOptions({
                                 global : {
                                     useUTC : false
                                 }
                             });
-                            Highcharts.chart('container_{{chart.city}}_{{chart.target}}', {
+                            Highcharts.chart('container_{{chart.station}}', {
                               title: {
-                                  text: '{{chart.city}} {{chart.target}}'
+                                  text: '{{city}} {{target}} {{chart.station}}'
                               },
 
                               subtitle: {
@@ -50,7 +49,7 @@
 
                               yAxis: {
                                   title: {
-                                      text: '{{chart.target}}'
+                                      text: '{{target}}'
                                   }
                               },
                               legend: {
@@ -71,7 +70,7 @@
                               series: [
                               {% for chart_data in chart.chart_data_series %}
                               {
-                                  name: '{{chart_data.name}}',
+                                  name: '{{chart.station}}',
                                   data: {{chart_data.data|safe}},
                                   pointStart: Date.parse('{{chart_data.start_dt|safe}}'),
                                   pointInterval: 3600 * 1000
